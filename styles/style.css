@@ -28,6 +28,7 @@ body {
   text-align: center;
   font-size: 54px;
   font-weight: 600;
+  margin-bottom: 30px;
 }
 
 .wrapper {
@@ -61,6 +62,8 @@ body {
 
 .btn:hover {
   background-color: #3ea141;
+  transform: scale(.95, .95);
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, .6);
 }
 
 .taskwrap {
@@ -74,18 +77,19 @@ body {
 .tasklist {
   width: 100%;
   align-items: center;
-  justify-content: center;
-  list-style: none;
+  list-style: disc;
   justify-content: space-between;
 }
 
 .taskItem {
   width: 100%;
+  height: 50px;
+  gap: 20px;
   display: flex;
   flex-direction: row;
-  font-size: 18px;
+  font-size: 24px;
   font-weight: 500;
-  line-height: 24px;
+  line-height: 50px;
   transform: translateX(-140px);
   justify-content: space-between;
   text-wrap: wrap;
@@ -103,8 +107,44 @@ body {
   cursor: pointer;
   transition: all .5s easy-in-out;
   cursor: pointer;
+  transition: all .5s easy-in-out;
 }
 
 .delBtn:hover {
   background-color: #f04b4b;
+  transform: scale(.95, .95);
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, .6);
+}
+
+/* Новый стиль для задачи в процессе - оранжевый фон и контрастный текст */
+.in-progress {
+  background-color: #FFA500; /* оранжевый */
+  color: #fdfafa; /* светлый текст */
+}
+
+/* Кнопка "В процессе" */
+.inProgressBtn {
+  background-color: #be760b;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-weight: 600;
+  cursor: pointer;
+  
+  /* margin-right: 20px; */
+  transition: all 0.3s ease-in-out;
+  color: #fdfafa;
+}
+
+.inProgressBtn:hover {
+  background-color: #ff9900;
+  transform: scale(0.95);
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+/* Стиль с иконкой веселого смайлика для новых задач */
+.smiley-icon span:first-child::before {
+  content: "😄";
+  font-size: 24px;
+  margin-right: 8px;
 }

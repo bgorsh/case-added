@@ -18,16 +18,16 @@ btn.textContent = 'Добавить'
 wrapper.appendChild(btn)
 btn.classList.add('btn')
 
-// Create task container and list once
+// Создаем контейнер для задач и список один раз
 const taskwrap = document.createElement('div')
 app.appendChild(taskwrap)
 taskwrap.classList.add('taskwrap')
 
-const tasklist = document.createElement('ol')
+const tasklist = document.createElement('ul')
 taskwrap.appendChild(tasklist)
 tasklist.classList.add('tasklist')
 
-// Load tasks from localStorage and render
+// Загрузка задач из localStorage и отображение
 function loadTasks() {
   const tasks = JSON.parse(localStorage.getItem('tasks')) || []
   tasks.forEach(task => {
@@ -35,26 +35,38 @@ function loadTasks() {
   })
 }
 
-// Save tasks to localStorage
+// Сохранение задач в localStorage
 function saveTasks() {
   const tasks = []
   tasklist.querySelectorAll('li').forEach(li => {
-    // The task text is the li text content minus the delete button text
-    // So we get the firstChild node value (text node)
-    tasks.push(li.firstChild.textContent)
+    // Текст задачи - это текст первого дочернего узла (span)
+    tasks.push(li.querySelector('span').textContent)
   })
   localStorage.setItem('tasks', JSON.stringify(tasks))
 }
 
-// Add task item to DOM with delete button and delete handler
+// Добавление задачи в DOM с кнопками "Удалить" и "В процессе"
 function addTaskToDOM(task) {
   const taskItem = document.createElement('li')
   taskItem.classList.add('taskItem')
+  taskItem.classList.add('smiley-icon') // Добавляем стиль с иконкой смайлика
 
   const taskText = document.createElement('span')
   taskText.textContent = task
   taskItem.appendChild(taskText)
 
+  // Кнопка "В процессе"
+  const inProgressBtn = document.createElement('button')
+  inProgressBtn.textContent = 'В процессе'
+  inProgressBtn.classList.add('inProgressBtn')
+  taskItem.appendChild(inProgressBtn)
+
+  // Обработчик клика для кнопки "В процессе"
+  inProgressBtn.onclick = function() {
+    taskItem.classList.toggle('in-progress')
+  }
+
+  // Кнопка "Удалить"
   const delBtn = document.createElement('button')
   delBtn.textContent = 'Удалить'
   delBtn.classList.add('delBtn')
@@ -79,5 +91,5 @@ btn.onclick = function() {
   }
 }
 
-// Initial load of tasks
+// Инициализация загрузки задач при старте
 loadTasks()
