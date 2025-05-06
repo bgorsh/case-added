@@ -116,21 +116,23 @@ body {
   box-shadow: 2px 2px 4px rgba(0, 0, 0, .6);
 }
 
-/* Новый стиль для задачи в процессе - оранжевый фон и контрастный текст */
-.in-progress {
-  background-color: #FFA500; /* оранжевый */
-  color: #fdfafa; /* светлый текст */
+
+/* Стили для контейнера кнопок, чтобы кнопки располагались рядом */
+.buttons-container {
+  display: flex; /* Располагаем кнопки в строку */
+  gap: 10px; /* Отступ между кнопками */
+  /* margin-top: 5px; Отступ сверху для отделения от текста задачи */
 }
 
-/* Кнопка "В процессе" */
+/* Дополнительные стили для кнопок, если нужно */
 .inProgressBtn {
   background-color: #be760b;
   border: none;
   border-radius: 20px;
   padding: 10px 20px;
+  font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  
   /* margin-right: 20px; */
   transition: all 0.3s ease-in-out;
   color: #fdfafa;
@@ -139,10 +141,14 @@ body {
 .inProgressBtn:hover {
   background-color: #ff9900;
   transform: scale(0.95);
-  box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+  box-shadow: 2px 2px 4px rgba(0,0,0,0.6);
 }
 
-/* Стиль с иконкой веселого смайлика для новых задач */
+.in-progress {
+  color: #FFA500; /* оранжевый */
+  /* color: #fdfafa; светлый текст */
+}
+
 .smiley-icon span:first-child::before {
   content: "😄";
   font-size: 24px;

@@ -55,11 +55,15 @@ function addTaskToDOM(task) {
   taskText.textContent = task
   taskItem.appendChild(taskText)
 
+  // Создаем контейнер для кнопок, чтобы разместить их рядом друг с другом
+  const buttonsContainer = document.createElement('div')
+  buttonsContainer.classList.add('buttons-container')
+
   // Кнопка "В процессе"
   const inProgressBtn = document.createElement('button')
   inProgressBtn.textContent = 'В процессе'
   inProgressBtn.classList.add('inProgressBtn')
-  taskItem.appendChild(inProgressBtn)
+  buttonsContainer.appendChild(inProgressBtn)
 
   // Обработчик клика для кнопки "В процессе"
   inProgressBtn.onclick = function() {
@@ -70,12 +74,15 @@ function addTaskToDOM(task) {
   const delBtn = document.createElement('button')
   delBtn.textContent = 'Удалить'
   delBtn.classList.add('delBtn')
-  taskItem.appendChild(delBtn)
+  buttonsContainer.appendChild(delBtn)
 
   delBtn.onclick = function() {
     taskItem.remove()
     saveTasks()
   }
+
+  // Добавляем контейнер с кнопками в элемент задачи
+  taskItem.appendChild(buttonsContainer)
 
   tasklist.appendChild(taskItem)
 }
